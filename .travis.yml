@@ -5,5 +5,14 @@ php:
   - 7.1
   - 7.2
 
+services:
+  - mysql
+
+before_script:
+  - mysql -uroot -e "create database IF NOT EXISTS kapas;"
+  - mysql -uroot kapas < database.sql
+  - cp .env.dist .env
+  - sed -i -- 's/db_user:db_password/travis/g' .env
+  - sed -i -- 's/db_name/kapas/g' .env
 script:
   - composer install --no-interaction
