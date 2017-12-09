@@ -5,3 +5,4 @@
 ## Requirements
 
 * PHP ^7.0.8
+* MySQL 5.7
